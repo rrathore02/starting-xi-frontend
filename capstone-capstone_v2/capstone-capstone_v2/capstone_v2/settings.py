@@ -130,19 +130,25 @@ REST_FRAMEWORK = {
 }
 
 
-# ── CORS Settings for React ───────────────────────────────────
+# ── CORS Settings for React and R Shiny (aligned with team capstone_v2 repo) ──
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",    # The default React dev server
-    "http://127.0.0.1:3000",   # Also for React
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "http://localhost:8080",
+    "http://127.0.0.1:8080",
+    "http://localhost:3838",  # default R Shiny dev server
+    "http://127.0.0.1:3838",
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True  # Dev only; tighten for production
 CORS_ALLOW_CREDENTIALS = True
 
-# Browser clients on Vite (port 8080) send CSRF + session cookies via the dev proxy.
+# Browser clients on Vite (8080) and Shiny (3838) send CSRF + session cookies when calling the API.
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8080",
     "http://127.0.0.1:8080",
     "http://localhost:3000",
     "http://127.0.0.1:3000",
+    "http://localhost:3838",
+    "http://127.0.0.1:3838",
 ]
