@@ -8,6 +8,8 @@ import {
   ALL_TEST_KEYS,
   TEST_FIELD_GROUPS,
   TEST_FIELD_LABELS,
+  formatAthleteTestMetric,
+  testFieldLabelWithUnit,
   type TestFieldKey,
 } from "@/constants/athleteTests";
 import { Button } from "@/components/ui/button";
@@ -31,8 +33,9 @@ function summarizeTest(t: AthleteTest): string {
   const parts: string[] = [];
   for (const key of ALL_TEST_KEYS) {
     const v = t[key];
-    if (v != null && v !== "") parts.push(`${TEST_FIELD_LABELS[key]}: ${v}`);
-    if (parts.length >= 5) break;
+    if (v == null || v === "") continue;
+    const withUnit = formatAthleteTestMetric(key, v as string | number);
+    if (withUnit) parts.push(`${TEST_FIELD_LABELS[key]}: ${withUnit}`);
   }
   return parts.length ? parts.join(" · ") : "—";
 }
@@ -288,7 +291,8 @@ export default function Profile() {
             <CardTitle className="text-xl">Log measurables</CardTitle>
             <CardDescription>
               Enter any metrics you have from a session. Leave fields blank if you did not run that test. At least one
-              value is required to save a new entry.
+              value is required to save a new entry. Each field shows the unit the API benchmarks expect (e.g. 40-yard
+              dash in seconds, vertical jump in inches).
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -299,8 +303,8 @@ export default function Profile() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     {group.keys.map((key) => (
                       <div key={key} className="space-y-1.5">
-                        <Label htmlFor={`test-${key}`} className="text-xs text-muted-foreground font-normal">
-                          {TEST_FIELD_LABELS[key]}
+                        <Label htmlFor={`test-${key}`} className="text-xs text-muted-foreground font-normal leading-snug">
+                          {testFieldLabelWithUnit(key)}
                         </Label>
                         <Input
                           id={`test-${key}`}

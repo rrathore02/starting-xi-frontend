@@ -14,7 +14,9 @@ SECRET_KEY = 'django-insecure-your-new-secret-key-here'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+# Local dev: allow all hosts so Vite (:: / [::1] / LAN IPs) and the proxy never hit DisallowedHost.
+# Tighten ALLOWED_HOSTS before any real deployment.
+ALLOWED_HOSTS = ["*"] if DEBUG else ["localhost", "127.0.0.1"]
 
 
 # Application definition
