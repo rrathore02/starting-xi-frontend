@@ -1,39 +1,41 @@
-<<<<<<< HEAD
-# starting-xi-frontend
-=======
-# Starting XI Benchmarks
+# Starting XI — Frontend
 
-NCAA soccer division benchmarking and athlete performance.
+NCAA soccer division benchmarking and athlete performance (Vite + React).
 
 ## Run locally
 
-Node 18+ and npm. Install once, then start:
+Node 18+ and npm. From this folder:
 
 ```sh
 npm i
 npm run dev
 ```
 
+Dev server defaults to **port 8080** and proxies `/api` to Django on **8000** (see `vite.config.ts`).
+
 ## Structure
 
 ```
 src/
-├── components/
-│   ├── layout/      # Header, Footer
-│   ├── landing/     # Hero, Features, HowItWorks, Divisions, Testimonial, Cta
-│   └── ui/          # shadcn components
-├── constants/       # landing copy (landing.ts)
+├── components/     # layout, landing, shadcn ui
+├── constants/      # copy, athlete test field maps
+├── contexts/       # auth (session API)
 ├── hooks/
-├── lib/             # utils (cn, etc.)
-├── pages/           # Index, StarPlayer, Recruitments, NotFound
+├── lib/            # api.ts (CSRF + session fetch), utils
+├── pages/          # Index, Profile, StarPlayer, Recruitments, NotFound
 └── test/
 ```
 
 ## Scripts
 
-- `npm run dev` — dev server
-- `npm run build` — production build
-- `npm run preview` — preview build
-- `npm run lint` — ESLint
-- `npm run test` — tests
->>>>>>> 327940c (Frontend)
+| Script | Description |
+|--------|-------------|
+| `npm run dev` | Dev server |
+| `npm run build` | Production build |
+| `npm run preview` | Preview production build |
+| `npm run lint` | ESLint |
+| `npm run test` | Vitest |
+
+## API
+
+Set `VITE_API_BASE_URL` only if you are **not** using the Vite proxy (e.g. calling Django directly).

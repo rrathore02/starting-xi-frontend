@@ -7,7 +7,7 @@ Frontend/dist-ssr/
 Frontend/.env
 Frontend/.env.*
 
-# Backend (Python/Django — common)
+# Backend (Python/Django)
 Backend/**/__pycache__/
 Backend/**/*.py[cod]
 Backend/**/.venv/
@@ -18,6 +18,14 @@ Backend/**/*.sqlite3
 Backend/**/db.sqlite3
 Backend/**/.env
 Backend/**/.env.*
+capstone-capstone_v2/**/__pycache__/
+capstone-capstone_v2/**/*.py[cod]
+capstone-capstone_v2/**/.venv/
+capstone-capstone_v2/**/venv/
+capstone-capstone_v2/**/.pytest_cache/
+capstone-capstone_v2/**/db.sqlite3
+capstone-capstone_v2/**/.env
+capstone-capstone_v2/**/.env.*
 
 # OS / editor
 .DS_Store

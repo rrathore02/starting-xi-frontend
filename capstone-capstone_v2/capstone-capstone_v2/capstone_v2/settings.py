@@ -136,8 +136,10 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3000",
     "http://localhost:8080",
     "http://127.0.0.1:8080",
-    "http://localhost:3838",  # default R Shiny dev server
+    "http://localhost:3838",
     "http://127.0.0.1:3838",
+    "http://localhost:6746",  # R Shiny (team default)
+    "http://127.0.0.1:6746",
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True  # Dev only; tighten for production
@@ -151,4 +153,6 @@ CSRF_TRUSTED_ORIGINS = [
     "http://127.0.0.1:3000",
     "http://localhost:3838",
     "http://127.0.0.1:3838",
+    "http://localhost:6746",
+    "http://127.0.0.1:6746",
 ]
